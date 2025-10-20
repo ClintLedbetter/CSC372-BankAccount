@@ -34,6 +34,7 @@ public class CheckingAccount extends BankAccount {
         } else {
         	double newBalance = currentBalance - amount - 30.0;
             System.out.println("Overdraft occurred! Withdrawal of $" + amount + " plus $30 fee.");
+            setBalance(newBalance);
             System.out.println("New balance: $" + newBalance);
         }
     }

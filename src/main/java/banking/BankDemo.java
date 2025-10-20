@@ -22,7 +22,7 @@ public class BankDemo {
     public static void main(String[] args) {
     	// BankAccount tests:
     	
-    	// normal transactions
+    	// test starting with zero balance for normal deposit then withdrawal
         System.out.println("=== TEST CASE 1: BankAccount ===");
         BankAccount account1 = new BankAccount("Clint", "Ledbetter", 1001);
         account1.deposit(500);
@@ -48,17 +48,26 @@ public class BankDemo {
         account3.withdrawal(-100); // should show warning message
         account3.accountSummary();
         
-        // test for BankAccount with CheckingAccount:
+        // test for attempt to withdraw more than the available balance
+        System.out.println("\n--- Test Case 5: BankAccount Insufficient Funds Withdrawal ---");
+        BankAccount account4 = new BankAccount("Brad", "Pitt", 1003);
+        account4.deposit(50.00);  // Deposit a small amount
+        System.out.println("Current Balance: $" + account4.getBalance());
+        System.out.println("Attempting to withdraw $100...");
+        account4.withdrawal(100.00); // Should trigger insufficient funds message
+        account4.accountSummary();
         
-        // normal transaction
-        System.out.println("\n=== TEST CASE 5: CheckingAccount (No Overdraft) ===");
+        // test for BankAccount with extended CheckingAccount:
+        
+        // test starting with zero balance for normal deposit then withdrawal and added interest rate to summary
+        System.out.println("\n=== TEST CASE 6: CheckingAccount (No Overdraft) ===");
         CheckingAccount checking1 = new CheckingAccount("Jane", "Doe", 2001, 1.5);
         checking1.deposit(300);
         checking1.processWithdrawal(150); // no overdraft
         checking1.displayAccount();
         
-        // overdraft transaction
-        System.out.println("\n=== TEST CASE 6: CheckingAccount (Overdraft Fee Applied) ===");
+        // test for overdraft withdrawal with fee applied
+        System.out.println("\n=== TEST CASE 7: CheckingAccount (Overdraft Fee Applied) ===");
         CheckingAccount checking2 = new CheckingAccount("John", "Smith", 3001, 2.0);
         checking2.deposit(100);
         checking2.processWithdrawal(150); // triggers overdraft fee

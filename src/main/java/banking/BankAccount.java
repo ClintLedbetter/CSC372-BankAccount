@@ -19,7 +19,7 @@ package banking;
     private String firstName;
     private String lastName;
     private int accountID;
-    private double balance;
+    private double balance;  
     //Methods:
     // Default constructor - initializes balance to zero
     public BankAccount() {
@@ -85,6 +85,9 @@ package banking;
         return balance;
     }
 
+    protected void setBalance(double newBalance) {
+        this.balance = newBalance;
+    }    
     // Display account summary
     public void accountSummary() {
         System.out.println("\n--- Account Summary ---");
