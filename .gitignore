@@ -1,0 +1,9 @@
+# Eclipse / Java defaults
+/bin/
+/.settings/
+.classpath
+/.project
+
+# OS / system
+.DS_Store
+Thumbs.db
